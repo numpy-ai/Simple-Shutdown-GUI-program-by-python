@@ -15,8 +15,10 @@ def result(n) :
 
 def shutdown_time() : 
     return os.system("shutdown -s -t " + ent1.get())
-def shutdown_cancel() :
+def cancel() :
     return os.system("shutdown -a")
+def restart() : 
+    return os.system("shutdown -r -t")
 
 ent1 = Entry(tk)
 ent1.bind("<Return>", result)
@@ -24,6 +26,7 @@ ent1.pack()
 lab2.pack()
 
 Button(tk, text = "shutdown_time", command = shutdown_time).place(x = 80, y = 100)
-Button(tk, text = "shutdown_cancel", command = shutdown_cancel).place(x = 75, y = 150)
+Button(tk, text = "restart", command = restart).place(x = 100, y = 130)
+Button(tk, text = "cancel", command = cancel).place(x = 100, y = 160)
 
 tk.mainloop()
