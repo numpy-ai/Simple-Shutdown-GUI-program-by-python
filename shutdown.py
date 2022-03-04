@@ -7,7 +7,7 @@ tk.title("Enter Shutdown Time")
 tk.resizable(False, False)
 
 lab1 = Label(tk)
-lab1['text'] = "희망하는 시간(Desired time)"
+lab1['text'] = "희망하는 시간(Time you want)"
 lab1.pack()
 
 lab2 = Label(tk)
