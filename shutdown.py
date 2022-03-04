@@ -16,11 +16,11 @@ def print_result() :
 def shutdown_time() : 
     print_result()
     return os.system("shutdown -s -t " + ent1.get())
-def cancel() :
-    return os.system("shutdown -a")
 def restart() :
     print_result()
     return os.system("shutdown -r -t")
+def cancel() :
+    return os.system("shutdown -a")
 
 ent1 = Entry(tk)
 ent1.bind("<Return>", print_result())
