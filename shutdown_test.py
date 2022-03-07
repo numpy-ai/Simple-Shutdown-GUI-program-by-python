@@ -1,5 +1,4 @@
 import os
-# from tkinter import*
 import tkinter.messagebox
 import tkinter as tki
 
@@ -23,7 +22,6 @@ ent1.pack()
 
 def print_result() :
     lab2.configure(text = "shutdown a " + ent1.get() + "m after")
-# ent1.bind("<Return>", print_result())
 lab2.pack()
 
 def error_box() :
