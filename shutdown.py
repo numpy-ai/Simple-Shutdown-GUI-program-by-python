@@ -1,6 +1,7 @@
 import os
 import tkinter.messagebox
 import tkinter as tki
+
 from setuptools import Command
 
 tk = tki.Tk()
@@ -16,27 +17,27 @@ limit_text_lab['text'] = "Range : 0-315360000(10y)"
 limit_text_lab.pack()
 
 lab2 = tki.Label(tk)
-ent1 = tki.Entry(tk)
+ent1 = tki.Entry(tk, textvariable=tki.IntVar())
 ent1.pack()
 
 def print_result() :
-    lab2.configure(text = "shutdown a " + ent1.get() + "m after")
+    lab2.configure(text = "shutdown a " + ent1.get() + "s after")
 lab2.pack()
 
 def error_box() :
     tkinter.messagebox.showerror("Limit Error!", "Range : 0-315360000(10y)")
 
-class main_funtion : 
+class Main_funtion : 
     def shutdown_time(self) : 
         print_result()
         return os.system("shutdown -s -t " + ent1.get())
     def restart(self) :
         print_result()
-        return os.system("shutdown -r -t")
+        return os.system("shutdown -r -t " + ent1.get())
     def cancel(self) :
         return os.system("shutdown -a")
 
-Activity_tool = main_funtion()
+Activity_tool = Main_funtion()
 
 button1 = tki.Button(tk, text = "shutdown time", command = Activity_tool.shutdown_time).place(x = 105, y = 90)
 button2 = tki.Button(tk, text = "restart", command = Activity_tool.restart).place(x = 125, y = 120)
