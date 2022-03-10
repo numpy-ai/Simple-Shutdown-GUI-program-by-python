@@ -25,26 +25,38 @@ def print_result() :
     Print_input_time_value.configure(text = "shutdown a " + input_time_value.get() + "s after")
 Print_input_time_value.pack()
 
+
 def error_box() :
     tkinter.messagebox.showerror("Limit Error!", "Range : 0-315360000(10y)")
     
 # if (input_time_value.get() > "315360000" or input_time_value.get() < "0") and len(input_time_value.get()) != 0 :
 #     error_box()
 
-def get_value(entryWidget):
-    value = entryWidget.get()
+time_value_type = ""
+
+def time_value_number():
+    global time_value_type
     try:
-        return int(value)
+        int(input_time_value.get())
+        time_value_type = "INT"
     except ValueError:
-        return None
+        time_value_type = "NOT INT"
 
 
 class Main_funtion : 
+    global time_value_type
+    time_value_number()
     def shutdown_time(self) : 
         print_result()
+        if time_value_type == "NOT INT" :
+            if int(input_time_value.get()) > 315360000 :
+                error_box()
         return os.system("shutdown -s -t " + input_time_value.get())
     def restart(self) :
         print_result()
+        if time_value_type == "NOT INT" :
+            if int(input_time_value.get()) > 315360000 :
+                error_box()
         return os.system("shutdown -r -t " + input_time_value.get())
     def cancel(self) :
         return os.system("shutdown -a")
