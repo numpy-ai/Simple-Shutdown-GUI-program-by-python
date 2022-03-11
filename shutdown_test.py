@@ -42,21 +42,23 @@ def time_value_number():
     except ValueError:
         time_value_type = "NOT INT"
 
+def verification_input_time() :
+    if time_value_type == "NOT INT" :
+            if int(input_time_value.get()) > 315360000 :
+                error_box()
+            if int(input_time_value.get()) < 0 :
+                error_box()
 
 class Main_funtion : 
     global time_value_type
     time_value_number()
     def shutdown_time(self) : 
         print_result()
-        if time_value_type == "NOT INT" :
-            if int(input_time_value.get()) > 315360000 :
-                error_box()
+        verification_input_time()
         return os.system("shutdown -s -t " + input_time_value.get())
     def restart(self) :
         print_result()
-        if time_value_type == "NOT INT" :
-            if int(input_time_value.get()) > 315360000 :
-                error_box()
+        verification_input_time()
         return os.system("shutdown -r -t " + input_time_value.get())
     def cancel(self) :
         return os.system("shutdown -a")
