@@ -1,11 +1,12 @@
 import os
 import tkinter.messagebox
 import tkinter as tki
+import random
 
 from setuptools import Command
 
 tk = tki.Tk()
-tk.geometry("300x200")
+tk.geometry("450x250")
 tk.title("Shutdown program")
 tk.resizable(False, False)
 
@@ -23,6 +24,8 @@ input_time_value.pack()
 
 def print_result() :
     Print_input_time_value.configure(text = "shutdown a " + input_time_value.get() + "s after")
+def print_result_2() :
+    Print_input_time_value.configure(text = "Ouch!")
 Print_input_time_value.pack()
 
 
@@ -63,11 +66,18 @@ class Main_funtion :
     def cancel(self) :
         return os.system("shutdown -a")
 
+def random_shutdown() : # 1/6 확률로 셧다운 시키는 코드, 테스트 단계에서 하면 쫄리니까 Ouch! 문자만 출력
+        isRandomNum = random.randint(1, 6);
+        print(isRandomNum)
+        if isRandomNum == 6 :
+            print_result_2()
+            
 Activity_tool = Main_funtion()
 
-button1 = tki.Button(tk, text = "shutdown time", command = Activity_tool.shutdown_time).place(x = 105, y = 90)
-button2 = tki.Button(tk, text = "restart", command = Activity_tool.restart).place(x = 125, y = 120)
-button3 = tki.Button(tk, text = "cancel", command = Activity_tool.cancel).place(x = 125, y = 150)
+button1 = tki.Button(tk, text = "shutdown time", command = Activity_tool.shutdown_time).place(x = 170, y = 95)
+button2 = tki.Button(tk, text = "random shutdown", command = random_shutdown).place(x = 170, y = 140)
+button3 = tki.Button(tk, text = "restart", command = Activity_tool.restart).place(x = 170, y = 170)
+button4 = tki.Button(tk, text = "cancel", command = Activity_tool.cancel).place(x = 170, y = 200)
 
 # if input_time_value.get() > "315360000":
 #     print(len(input_time_value.get()))
