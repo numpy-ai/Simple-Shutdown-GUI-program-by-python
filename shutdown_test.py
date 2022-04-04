@@ -24,7 +24,7 @@ input_time_value.pack()
 
 def print_result() :
     Print_input_time_value.configure(text = "shutdown a " + input_time_value.get() + "s after")
-def print_result_2() :
+def print_random_result() :
     Print_input_time_value.configure(text = "Ouch!")
 Print_input_time_value.pack()
 
@@ -70,7 +70,7 @@ def random_shutdown() : # 1/6 확률로 셧다운 시키는 코드, 테스트 �
         isRandomNum = random.randint(1, 6);
         print(isRandomNum)
         if isRandomNum == 6 :
-            print_result_2()
+            print_random_result()
             
 Activity_tool = Main_funtion()
 
