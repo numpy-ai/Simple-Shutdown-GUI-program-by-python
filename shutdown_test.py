@@ -19,8 +19,12 @@ limit_text_lab.pack()
 
 Print_input_time_value = tki.Label(tk)
 input_time_value = tki.Entry(tk)
-input_time_value.insert(tki.INSERT, "Enter Time(s)")   
+# input_time_value.insert(tki.INSERT, "Enter Time(s)")   
 input_time_value.pack()
+
+Enter_text_Anounce = tki.Label(tk)
+Enter_text_Anounce.configure(text = "↑ Enter Time(s) ↑")
+Enter_text_Anounce.pack()
 
 def print_result() :
     Print_input_time_value.configure(text = "shutdown a " + input_time_value.get() + "s after")
