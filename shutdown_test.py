@@ -70,18 +70,31 @@ class Main_funtion :
     def cancel(self) :
         return os.system("shutdown -a")
 
-def random_shutdown() : # 1/6 확률로 셧다운 시키는 코드, 테스트 단계에서 하면 쫄리니까 Ouch! 문자만 출력
+
+def random_print() : # 1/6 확률로 Ouch! 문자만 출력하고 카운트 + 1
         isRandomNum = random.randint(1, 6);
-        print(isRandomNum)
+        isRandomOfCnt = 0
+        print("randomNum : ", isRandomNum)
         if isRandomNum == 6 :
+            tkinter.messagebox.showinfo(message="Oh")
             print_random_result()
+            isRandomOfCnt += 1
+        return isRandomOfCnt
+
+randomOfCnt = random_print()
+print(randomOfCnt)
+print_get_six = tki.Label(tk)
+print_get_six.configure(text = randomOfCnt)
+print_get_six.pack()
+
+
             
 Activity_tool = Main_funtion()
 
-button1 = tki.Button(tk, text = "shutdown time", command = Activity_tool.shutdown_time).place(x = 170, y = 95)
-button2 = tki.Button(tk, text = "random shutdown", command = random_shutdown).place(x = 170, y = 140)
+button1 = tki.Button(tk, text = "shutdown time", command = Activity_tool.shutdown_time).place(x = 120, y = 130)
+button2 = tki.Button(tk, text = "random shutdown", command = random_print).place(x = 250, y = 130)
 button3 = tki.Button(tk, text = "restart", command = Activity_tool.restart).place(x = 170, y = 170)
-button4 = tki.Button(tk, text = "cancel", command = Activity_tool.cancel).place(x = 170, y = 200)
+button4 = tki.Button(tk, text = "cancel", command = Activity_tool.cancel).place(x = 250, y = 170)
 
 # if input_time_value.get() > "315360000":
 #     print(len(input_time_value.get()))
